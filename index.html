@@ -10,15 +10,16 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#0d0519 0%,#2d0845 50%,#1a0a2e 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px}
 .card{background:#fff;border-radius:28px;padding:40px 32px;max-width:420px;width:100%;text-align:center;box-shadow:0 32px 80px rgba(0,0,0,0.5)}
-.logo{width:84px;height:84px;background:linear-gradient(135deg,#E91E8C,#FFB300);border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:38px;margin:0 auto 16px;box-shadow:0 8px 24px rgba(233,30,140,0.35)}
+.logo-box{width:84px;height:84px;border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:38px;margin:0 auto 16px;overflow:hidden}
+.logo-box img{width:100%;height:100%;object-fit:contain;border-radius:16px}
 .arabic{font-family:'Amiri',serif;font-size:18px;color:#7B1FA2;margin-bottom:4px;direction:rtl}
 h1{font-size:20px;font-weight:800;color:#1a0a2e;margin-bottom:4px}
 .sub{font-size:12px;color:#999;margin-bottom:28px}
 .progress-bar{width:100%;height:4px;background:#f0e6f6;border-radius:10px;overflow:hidden;margin-bottom:8px}
-.progress-fill{height:100%;background:linear-gradient(90deg,#E91E8C,#FFB300);border-radius:10px;width:0%;transition:width 2s ease}
-#status{font-size:12px;color:#E91E8C;margin-bottom:24px;min-height:18px;font-weight:500}
+.progress-fill{height:100%;border-radius:10px;width:0%;transition:width 2s ease}
+#status{font-size:12px;margin-bottom:24px;min-height:18px;font-weight:500}
 .portals{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-.portal-btn{padding:14px 10px;border-radius:14px;border:none;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;transition:transform 0.2s,box-shadow 0.2s;text-decoration:none;color:#fff}
+.portal-btn{padding:14px 10px;border-radius:14px;border:none;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;transition:transform 0.2s;text-decoration:none;color:#fff}
 .portal-btn:active{transform:scale(0.97)}
 .portal-btn i{font-size:22px}
 .p-admin{background:linear-gradient(135deg,#E91E8C,#C2185B);box-shadow:0 6px 20px rgba(233,30,140,0.35)}
@@ -40,33 +41,27 @@ h1{font-size:20px;font-weight:800;color:#1a0a2e;margin-bottom:4px}
 </head>
 <body>
 <div class="card">
-  <div class="logo">🕌</div>
-  <p class="arabic">مركز الأساس الأكاديمي</p>
-  <h1>Markaz Al Asas Academy</h1>
-  <p class="sub">Select your portal to continue</p>
-
+  <div class="logo-box" id="logo-box">&#x1F54C;</div>
+  <p class="arabic" id="school-ar">&#x645;&#x631;&#x643;&#x632; &#x627;&#x644;&#x623;&#x633;&#x627;&#x633; &#x627;&#x644;&#x623;&#x643;&#x627;&#x62F;&#x64A;&#x645;&#x64A;</p>
+  <h1 id="school-en">Markaz Al Asas Academy</h1>
+  <p class="sub" id="tagline">Select your portal to continue</p>
   <div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
-  <div id="status">Opening portal, please wait…</div>
-
+  <div id="status">Opening portal, please wait...</div>
   <div class="portals">
-    <a class="portal-btn p-admin"   href="https://script.google.com/macros/s/AKfycbxGDd49uOZsPdYFg88s8slWcxf5F0poAmaYuRgCZtMrYGNz8iBUMzLMvzBNO4FIU2IR/exec?page=admin"   target="_top"><i class="fas fa-tachometer-alt"></i>Admin</a>
-    <a class="portal-btn p-teacher" href="https://script.google.com/macros/s/AKfycbxGDd49uOZsPdYFg88s8slWcxf5F0poAmaYuRgCZtMrYGNz8iBUMzLMvzBNO4FIU2IR/exec?page=teacher" target="_top"><i class="fas fa-chalkboard-teacher"></i>Teacher</a>
-    <a class="portal-btn p-parent"  href="https://script.google.com/macros/s/AKfycbxGDd49uOZsPdYFg88s8slWcxf5F0poAmaYuRgCZtMrYGNz8iBUMzLMvzBNO4FIU2IR/exec?page=parent"  target="_top"><i class="fas fa-user-friends"></i>Parent</a>
-    <a class="portal-btn p-student" href="https://script.google.com/macros/s/AKfycbxGDd49uOZsPdYFg88s8slWcxf5F0poAmaYuRgCZtMrYGNz8iBUMzLMvzBNO4FIU2IR/exec?page=student" target="_top"><i class="fas fa-user-graduate"></i>Student</a>
+    <a class="portal-btn p-admin"   id="btn-admin"   href="#" target="_top"><i class="fas fa-tachometer-alt"></i>Admin</a>
+    <a class="portal-btn p-teacher" id="btn-teacher" href="#" target="_top"><i class="fas fa-chalkboard-teacher"></i>Teacher</a>
+    <a class="portal-btn p-parent"  id="btn-parent"  href="#" target="_top"><i class="fas fa-user-friends"></i>Parent</a>
+    <a class="portal-btn p-student" id="btn-student" href="#" target="_top"><i class="fas fa-user-graduate"></i>Student</a>
   </div>
-
-  <a class="btn-main btn-pink" href="https://script.google.com/macros/s/AKfycbxGDd49uOZsPdYFg88s8slWcxf5F0poAmaYuRgCZtMrYGNz8iBUMzLMvzBNO4FIU2IR/exec" target="_top">
+  <a class="btn-main btn-pink" id="btn-portal" href="#" target="_top">
     <i class="fas fa-sign-in-alt"></i> Open Full Portal
   </a>
-
   <div class="divider"><hr><span>Admissions</span><hr></div>
-
-  <a class="btn-main btn-apply" href="https://script.google.com/macros/s/AKfycbxGDd49uOZsPdYFg88s8slWcxf5F0poAmaYuRgCZtMrYGNz8iBUMzLMvzBNO4FIU2IR/exec#admissions" target="_top">
+  <a class="btn-main btn-apply" id="btn-admission" href="#" target="_top">
     <i class="fas fa-user-plus"></i> Online Admission
   </a>
-
   <div class="note-box">
-    <p>⚠️ If portal does not open:</p>
+    <p>&#x26A0;&#xFE0F; If portal does not open:</p>
     <ol>
       <li>Open in <strong>Google Chrome</strong></li>
       <li>Sign into your <strong>Google account</strong></li>
@@ -74,19 +69,99 @@ h1{font-size:20px;font-weight:800;color:#1a0a2e;margin-bottom:4px}
       <li>Do <strong>not</strong> open from WhatsApp directly</li>
     </ol>
   </div>
-  <p class="footer">Markaz Al Asas Academy © 2025</p>
+  <p class="footer" id="footer-txt">Markaz Al Asas Academy &copy; 2025</p>
 </div>
 
 <script>
-var GAS = 'https://script.google.com/macros/s/AKfycbxGDd49uOZsPdYFg88s8slWcxf5F0poAmaYuRgCZtMrYGNz8iBUMzLMvzBNO4FIU2IR/exec';
+// ============================================================
+// CHANGE SETTINGS HERE ONLY
+// ============================================================
 
-// Animate progress
-setTimeout(function(){ document.getElementById('prog').style.width = '100%'; }, 100);
+// Logo: paste image URL here. Leave empty to show default icon.
+// Example: "https://drive.google.com/uc?export=view&id=YOUR_ID"
+var LOGO_URL = "";
 
-// Auto redirect to full portal after 2s
-setTimeout(function(){
-  document.getElementById('status').textContent = 'Tap a portal above to login';
-  document.getElementById('status').style.color = '#388E3C';
+// School name in English
+var SCHOOL_NAME_EN = "Markaz Al Asas Academy";
+
+// School name in Arabic
+var SCHOOL_NAME_AR = "مركز الأساس الأكاديمي";
+
+// Tagline below school name
+var TAGLINE = "Select your portal to continue";
+
+// Main theme color (hex code)
+var THEME_COLOR = "#E91E8C";
+
+// Your Google Apps Script URL
+var GAS_URL = "https://script.google.com/macros/s/AKfycbxGDd49uOZsPdYFg88s8slWcxf5F0poAmaYuRgCZtMrYGNz8iBUMzLMvzBNO4FIU2IR/exec";
+
+// Copyright year
+var YEAR = "2025";
+
+// ============================================================
+// DO NOT EDIT BELOW THIS LINE
+// ============================================================
+
+function applyConfig() {
+  var en  = document.getElementById("school-en");
+  var ar  = document.getElementById("school-ar");
+  var sub = document.getElementById("tagline");
+  var ft  = document.getElementById("footer-txt");
+  var box = document.getElementById("logo-box");
+  var pf  = document.getElementById("prog");
+  var st  = document.getElementById("status");
+
+  if (en)  en.textContent  = SCHOOL_NAME_EN;
+  if (ar)  ar.textContent  = SCHOOL_NAME_AR;
+  if (sub) sub.textContent = TAGLINE;
+  if (ft)  ft.innerHTML    = SCHOOL_NAME_EN + " &copy; " + YEAR;
+  document.title = SCHOOL_NAME_EN;
+
+  if (box) {
+    box.style.background = "linear-gradient(135deg," + THEME_COLOR + ",#FFB300)";
+    box.style.boxShadow  = "0 8px 24px " + THEME_COLOR + "55";
+  }
+  if (pf)  pf.style.background = "linear-gradient(90deg," + THEME_COLOR + ",#FFB300)";
+  if (st)  st.style.color      = THEME_COLOR;
+
+  if (LOGO_URL && LOGO_URL !== "") {
+    if (box) {
+      var img = document.createElement("img");
+      img.src = LOGO_URL;
+      img.alt = SCHOOL_NAME_EN + " logo";
+      img.onerror = function() { box.innerHTML = "&#x1F54C;"; };
+      box.innerHTML = "";
+      box.appendChild(img);
+    }
+  }
+
+  var links = [
+    { id: "btn-admin",     href: GAS_URL },
+    { id: "btn-teacher",   href: GAS_URL },
+    { id: "btn-parent",    href: GAS_URL },
+    { id: "btn-student",   href: GAS_URL },
+    { id: "btn-portal",    href: GAS_URL },
+    { id: "btn-admission", href: GAS_URL + "#admissions" }
+  ];
+  links.forEach(function(l) {
+    var el = document.getElementById(l.id);
+    if (el) el.href = l.href;
+  });
+}
+
+applyConfig();
+
+setTimeout(function() {
+  document.getElementById("prog").style.width = "100%";
+}, 100);
+
+setTimeout(function() {
+  var s = document.getElementById("status");
+  if (s) {
+    s.textContent = "Tap a portal above to login";
+    s.style.color = "#388E3C";
+  }
 }, 2000);
 </script>
 </body>
